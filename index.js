@@ -17,3 +17,5 @@
             console.error('Discordへの送信に失敗しました:', error);
         }
         }
+fetch("order.json")
+console.log(order.day);
