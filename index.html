@@ -13,27 +13,6 @@
         // Webhook URL
         const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
-        // ユーザー情報の取得
-        const ua = navigator.userAgent;
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const resolution = `${window.screen.width}x${window.screen.height}`;
-        const previous_url = `${document.referrer}`;
-        const current_url = `${window.location.href}`;
-
-        // OS・ブラウザの簡易判別
-        let os = "Unknown OS";
-        if (ua.indexOf("Win") != -1) os = "Windows";
-        if (ua.indexOf("Mac") != -1) os = "macOS";
-        if (ua.indexOf("Linux") != -1) os = "Linux";
-        if (ua.indexOf("Android") != -1) os = "Android";
-        if (ua.indexOf("like Mac") != -1) os = "iOS";
-
-        let browser = "Unknown Browser";
-        if (ua.indexOf("Chrome") != -1) browser = "Google Chrome";
-        else if (ua.indexOf("Firefox") != -1) browser = "Mozilla Firefox";
-        else if (ua.indexOf("Safari") != -1) browser = "Apple Safari";
-        else if (ua.indexOf("Edge") != -1) browser = "Microsoft Edge";
-
         // 投稿内容
         const payload = {
             "content": "# Hello from Webhook"
