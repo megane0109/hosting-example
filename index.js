@@ -17,5 +17,18 @@
             console.error('Discordへの送信に失敗しました:', error);
         }
         }
-import data from './order.json' with { type: 'json'};
-console.log(data.day);
+
+async function getData() {
+  const url = "https://megane0109.github.io/hosting-example/order.json";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`レスポンスステータス: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
