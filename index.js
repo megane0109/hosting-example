@@ -17,6 +17,5 @@
             console.error('Discordへの送信に失敗しました:', error);
         }
         }
-const fs = require('fs-extra')
-const foo = fs.readJsonSync('./order.json')
-console.log(foo.day);
+import data from './order.json' with { type: 'json'};
+console.log(data.day);
