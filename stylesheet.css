@@ -14,10 +14,12 @@ table {
     color: #576d8c;
     }
 .order_list {
+    width: 44%;
     text-align: center;
     vertical-align: bottom;
     }
 .task_status {
+    width: 24%;
     text-align: center;
     border: solid 3px #b3b1e3;
     }
