@@ -1,6 +1,7 @@
 table { 
     background-color: #bde9ba;
     margin: 0 auto;
+    font-family: 'ヒラギノ角ゴシック','Hiragino Sans','San Fransisco',sans-serif;
         }
 .order_date { font-size: 10px}
 .deadline { font-size: 34px}
