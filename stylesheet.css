@@ -28,6 +28,7 @@ table {
     vertical-align: bottom;
     }
 .deadline { 
+    width: 86%;
     font-size: 32px;
     text-align: center;
     }
