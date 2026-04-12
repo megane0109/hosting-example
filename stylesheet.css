@@ -1,5 +1,6 @@
 table { 
     background-color: #bde9ba;
-    width: 1000px;
         }
-.deadline { font-size: 50px}
+.order_date { font-size: 10px}
+.deadline { font-size: 34px}
+.time_left_value { font-size: 10px}
