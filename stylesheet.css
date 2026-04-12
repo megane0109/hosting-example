@@ -1,2 +1,5 @@
-table { background-color: #bde9ba; }
+table { 
+    background-color: #bde9ba;
+    width: 1000px;
+        }
 .deadline { font-size: 50px}
