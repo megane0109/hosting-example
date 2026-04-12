@@ -1,17 +1,20 @@
 body {
     background-image: url("https://i.ibb.co/3y0sqZPY/body-background.png");
     background-size: cover;
-}
+    }
 .outside { 
     background-color: #9390ce;
     margin: 5px 5px 5px 5px;
-}
+    }
 table { 
     background-color: #bde9ba;
     width: 95%;
     margin: 0 auto;
     font-family: 'ヒラギノ角ゴシック','Hiragino Sans','San Fransisco',sans-serif;
-        }
+    }
 .order_date { font-size: 10px}
-.deadline { font-size: 34px}
-.time_left_value { font-size: 10px}
+.deadline { 
+    width: 80%;
+    font-size: auto;
+    }
+.time_left_value { font-size: auto}
