@@ -7,14 +7,17 @@ body {
     margin: 5px 5px 5px 5px;
     }
 table { 
-    background-color: #bde9ba;
+    background-color: #ece8f4;
     width: 95%;
     margin: 0 auto;
-    font-family: 'ヒラギノ角ゴシック','Hiragino Sans','San Fransisco',sans-serif;
+    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
     }
 .order_date { font-size: 10px}
 .deadline { 
-    width: 80%;
-    font-size: auto;
+    width: 85%;
+    font-size: 30px;
     }
+.delivery {
+    font-size: 10px;
+}
 .time_left_value { font-size: auto}
