@@ -14,12 +14,10 @@ table {
     color: #576d8c;
     }
 .order_list {
-    width: 44%;
     text-align: center;
     vertical-align: bottom;
     }
 .task_status {
-    width: 24%;
     text-align: center;
     border: solid 3px #b3b1e3;
     }
@@ -28,7 +26,6 @@ table {
     vertical-align: bottom;
     }
 .deadline { 
-    width: 95%;
     font-size: 32px;
     text-align: center;
     }
@@ -39,12 +36,10 @@ table {
 }
 .details {
     font-size: 26px;
-    width: 76%
 }
 .boxes {
     font-size: 23px;
     text-align: center;
     border: double 3px #b3b1e3;
     padding-bottom: 4px;
-    width: 20%
 }
