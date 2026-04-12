@@ -2,8 +2,13 @@ body {
     background-image: url("https://i.ibb.co/3y0sqZPY/body-background.png");
     background-size: cover;
 }
+.outside { 
+    background-color: #9390ce;
+    margin: 5px 5px 5px 5px;
+}
 table { 
     background-color: #bde9ba;
+    width: 95%;
     margin: 0 auto;
     font-family: 'ヒラギノ角ゴシック','Hiragino Sans','San Fransisco',sans-serif;
         }
