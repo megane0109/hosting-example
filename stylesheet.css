@@ -5,11 +5,21 @@ body {
 .outside { 
     background-color: #9390ce;
     margin: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
     }
-table { 
+.top_level_table { 
     background-color: #ece8f4;
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0px;
+    margin-top: 0px;
+    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
+    color: #576d8c;
+    }
+.bottom_table { 
+    background-color: #ece8f4;
+    width: 100%;
+    margin: 0px;
+    margin-top: 10px;
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
     color: #576d8c;
     }
