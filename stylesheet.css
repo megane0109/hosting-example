@@ -2,29 +2,29 @@ body {
     background-image: url("https://i.ibb.co/3y0sqZPY/body-background.png");
     background-size: cover;
     }
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: #57557c;
+}
 .outside { 
     background-color: #9390ce;
     margin: 5px 5px 5px 5px;
     padding: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
     }
 table {
     border-radius: 10px 10px 10px 10px;
-}
-.top_level_table { 
     background-color: #ece8f4;
     width: 100%;
     margin: 0px;
     margin-top: 0px;
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
     color: #576d8c;
-    }
-.bottom_table { 
-    background-color: #ece8f4;
-    width: 100%;
-    margin: 0px;
+}
+.under_top_table {
     margin-top: 10px;
-    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
-    color: #576d8c;
     }
 .order_list {
     width: 44%;
