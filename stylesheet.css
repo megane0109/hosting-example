@@ -11,13 +11,40 @@ table {
     width: 95%;
     margin: 0 auto;
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
+    color: #576d8c;
     }
-.order_date { font-size: 10px}
+.order_list {
+    width: 44%;
+    text-align: center;
+    vertical-align: bottom;
+    }
+.task_status {
+    width: 24%;
+    text-align: center;
+    border: solid 3px #b3b1e3;
+    }
+.order_date { 
+    font-size: 12px;
+    vertical-align: bottom;
+    }
 .deadline { 
-    width: 85%;
-    font-size: 30px;
+    width: 86%;
+    font-size: 32px;
+    text-align: center;
     }
 .delivery {
-    font-size: 10px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: bottom;
 }
-.time_left_value { font-size: auto}
+.details {
+    font-size: 26px;
+    width: 76%
+}
+.boxes {
+    font-size: 23px;
+    text-align: center;
+    border: double 3px #b3b1e3;
+    padding-bottom: 4px;
+    width: 20%
+}
