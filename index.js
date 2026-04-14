@@ -27,8 +27,19 @@ async function getData() {
     }
 
     const result = await response.json();
-    console.log(result);
+    console.log(result.box_1);
+    
+    var greet = document.getElementById('boxes')
+    greet.innerHTML = result.box_1
+
+
+
+
   } catch (error) {
     console.error(error.message);
   }
+}
+
+function alertman() {
+  alert("Hello World");
 }
