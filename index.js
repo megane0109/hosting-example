@@ -86,6 +86,6 @@ function pushDraw() {
   console.log(month);
   console.log(date);
   console.log(day);
-  console.log(`# ${month}月${date}日${day}__${hour}:${minute}  納品`);
+  console.log(`# ${month}月${date}日${day}__${hour}:${minute}__納品`);
 
 }
