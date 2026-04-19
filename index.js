@@ -43,3 +43,25 @@ async function getData() {
 function alertman() {
   alert("Hello World");
 }
+
+async function bringData() {
+  const url = "https://megane0109.github.io/hosting-example/order.json";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`レスポンスステータス: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log(result.box_1);
+    
+    var greet = document.getElementById('boxes')
+    greet.innerHTML = result.box_1
+
+
+
+
+  } catch (error) {
+    console.error(error.message);
+  }
+}
