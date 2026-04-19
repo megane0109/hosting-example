@@ -84,7 +84,7 @@ function pushDraw() {
   const order = document.getElementById("select_order").value;
   const box = document.getElementById("box").value;
 
-  var markdown = document.getElementById("main_text");
+  var markdown = document.getElementById("textarea");
 
   markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品\n## ・\`${order}\`     \`x${box}箱\``;
 
