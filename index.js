@@ -76,5 +76,6 @@ function pushDraw() {
   const day = delivery_day.split('-')[2];
   console.log(month);
   console.log(day);
+  console.log("# ${month}月${day}日");
 
 }
