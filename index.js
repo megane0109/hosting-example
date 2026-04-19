@@ -4,7 +4,7 @@
 
         // 投稿内容
         const payload = {
-            "content": "# Hello from Webhook"
+            "content": "# aaa"
         };
 
         try {
@@ -69,7 +69,7 @@ async function bringData() {
 
 
 
-async function pushDraw() {
+function pushDraw() {
   const delivery_day = document.getElementById("calendar").value;
   const delivery_day_as_number = document.getElementById("calendar").valueAsNumber;
   const number_parse_day = new Date(delivery_day_as_number);
@@ -90,21 +90,6 @@ async function pushDraw() {
 
   markdown.value = main_string;
 
-  const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
-        // 投稿内容
-        const payload = {
-            "content": "main_string"
-        };
-
-        try {
-            await fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-        } catch (error) {
-            console.error('Discordへの送信に失敗しました:', error);
-        }
 
 }
