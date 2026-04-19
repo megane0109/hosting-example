@@ -86,13 +86,15 @@ async function pushDraw() {
 
   var markdown = document.getElementById("textarea");
 
-  markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品\n## ・\`${order}\`     \`x${box}箱\``;
+  const main_string = `# ${month}月${date}日${day}__${hour}:${minute}__納品\n## ・\`${order}\`     \`x${box}箱\``;
+
+  markdown.value = main_string;
 
   const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
         // 投稿内容
         const payload = {
-            "content": markdown.value
+            "content": main_string
         };
 
         try {
