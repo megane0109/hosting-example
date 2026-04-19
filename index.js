@@ -94,7 +94,7 @@ async function pushDraw() {
 
         // 投稿内容
         const payload = {
-            "content": main_string
+            "content": "main_string"
         };
 
         try {
