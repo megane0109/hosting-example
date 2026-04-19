@@ -79,8 +79,8 @@ function pushDraw() {
   const month = delivery_day.split('-')[1];
   const date = delivery_day.split('-')[2];
   const day = days_list[day_number];
-  const hour = document.getElementById("select_hour").value;
-  const minute = document.getElementById("select_minute").value;
+  const hour = document.getElementById("select_hour").value.toString().padStart(2, '0');
+  const minute = document.getElementById("select_minute").value.toString().padStart(2, '0');
 
 
   console.log(month);
