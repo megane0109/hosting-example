@@ -86,7 +86,7 @@ function pushDraw() {
 
   var markdown = document.getElementById("main_text");
 
-  markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品 ## ・\`${order}\`     \`x${box}箱\``;
+  markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品\n## ・\`${order}\`     \`x${box}箱\``;
 
   console.log(`# ${month}月${date}日${day}__${hour}:${minute}__納品`);
 
