@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- JavaScriptの適応 -->
+    <script src="index.js"></script>
+
     <title>Document</title>
 </head>
 <body>
 
     <div>
 
-        <input type="date" name="calendar" max="9999-12-31">
+        <input type="date" id="calender" name="calendar" max="9999-12-31">
 
         <select name="select_hour">
             <option value="9">9時</option>
@@ -115,6 +119,7 @@
     </div>
 
     <div>
+        <input type="button" value="DRAW" onclick="pushDraw()"/>
         <input type="textbox" name="" value="">
     </div>
 

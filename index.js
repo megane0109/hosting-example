@@ -65,3 +65,10 @@ async function bringData() {
     console.error(error.message);
   }
 }
+
+
+
+
+function pushDraw() {
+  console.log(document.getElementById("calender"));
+}
