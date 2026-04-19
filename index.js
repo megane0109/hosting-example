@@ -70,5 +70,5 @@ async function bringData() {
 
 
 function pushDraw() {
-  console.log(document.getElementById("calender"));
+  console.log(document.getElementById("calender.value"));
 }
