@@ -71,11 +71,15 @@ async function bringData() {
 
 function pushDraw() {
   const delivery_day = document.getElementById("calendar").value;
+  const delivery_day_as_number = document.getElementById("calendar").valueAsNumber;
+  const number_parse_day = new Date(delivery_day_as_number);
+  const day = number_parse_day.getDay();
+  var days = ["㈰", "㈪", "㈫", "㈬", "㈭", "㈮", "㈯"];
   
   const month = delivery_day.split('-')[1];
-  const day = delivery_day.split('-')[2];
+  const date = delivery_day.split('-')[2];
   console.log(month);
-  console.log(day);
-  console.log("# ${month}月${day}日");
+  console.log(date);
+  console.log("# ${month}月${day}日${days[day]}");
 
 }
