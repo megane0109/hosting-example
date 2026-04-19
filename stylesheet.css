@@ -80,5 +80,7 @@ h3 {
 }
 
 #main_text {
-    height: 50;
+    padding: 0;
+    line-height: 28px;
+    height: 100;
 }

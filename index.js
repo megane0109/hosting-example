@@ -81,10 +81,13 @@ function pushDraw() {
   const day = days_list[day_number];
   const hour = document.getElementById("select_hour").value.toString().padStart(2, '0');
   const minute = document.getElementById("select_minute").value.toString().padStart(2, '0');
+  const order = document.getElementById("order");
+  const box = document.getElementById("box");
 
   var markdown = document.getElementById("main_text");
 
-  markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品`;
+  markdown.value = `# ${month}月${date}日${day}__${hour}:${minute}__納品
+  `;
 
   console.log(`# ${month}月${date}日${day}__${hour}:${minute}__納品`);
 
