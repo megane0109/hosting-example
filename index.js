@@ -70,5 +70,11 @@ async function bringData() {
 
 
 function pushDraw() {
-  console.log(document.getElementById("calendar").value);
+  const delivery_day = document.getElementById("calendar").value;
+  
+  const month = delivery_day.split('-')[1];
+  const day = delivery_day.split('-')[2];
+  console.log(month);
+  console.log(day);
+
 }
