@@ -83,6 +83,6 @@ function pushDraw() {
   console.log(month);
   console.log(date);
   console.log(day);
-  console.log('# ${month}月${day}日${day}');
+  console.log(`# ${month}月${day}日${day}`);
 
 }
