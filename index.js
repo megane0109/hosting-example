@@ -1,4 +1,9 @@
  async function logToDiscord() {
+
+        pushDraw();
+
+
+
         // Webhook URL
         const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
