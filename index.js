@@ -81,7 +81,7 @@ function pushDraw() {
   const day = days_list[day_number];
   const hour = document.getElementById("select_hour").value.toString().padStart(2, '0');
   const minute = document.getElementById("select_minute").value.toString().padStart(2, '0');
-  console.log(document.getElementById("order").value);
+  const order = document.getElementById("select_order").value;
   const box = document.getElementById("box").value;
 
   var markdown = document.getElementById("main_text");
