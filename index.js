@@ -1,6 +1,6 @@
  async function logToDiscord() {
 
-        pushDraw();
+        const text = pushDraw();
 
 
 
@@ -9,7 +9,7 @@
 
         // 投稿内容
         const payload = {
-            "content": "# aaa"
+            "content": text
         };
 
         try {
@@ -95,6 +95,6 @@ function pushDraw() {
 
   markdown.value = main_string;
 
-
+  return main_string;
 
 }
