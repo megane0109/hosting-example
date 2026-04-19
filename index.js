@@ -73,13 +73,15 @@ function pushDraw() {
   const delivery_day = document.getElementById("calendar").value;
   const delivery_day_as_number = document.getElementById("calendar").valueAsNumber;
   const number_parse_day = new Date(delivery_day_as_number);
-  const day = number_parse_day.getDay();
-  var days = ["㈰", "㈪", "㈫", "㈬", "㈭", "㈮", "㈯"];
+  const day_number = number_parse_day.getDay();
+  var days_list = ["㈰", "㈪", "㈫", "㈬", "㈭", "㈮", "㈯"];
   
   const month = delivery_day.split('-')[1];
   const date = delivery_day.split('-')[2];
+  const day = days_list[day_number];
+
   console.log(month);
   console.log(date);
-  console.log("# ${month}月${day}日${days[day]}");
+  console.log('# ${month}月${day}日${day}');
 
 }
