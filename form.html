@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- CSSの適応 -->
+    <link href="order.css" rel="stylesheet" />
+    
     <!-- JavaScriptの適応 -->
     <script src="index.js"></script>
 
@@ -11,11 +14,11 @@
 </head>
 <body>
 
+    <input type="date" id="calendar" name="calendar" max="9999-12-31">
+
     <div>
 
-        <input type="date" id="calendar" name="calendar" max="9999-12-31">
-
-        <select id="select_hour" name="select_hour">
+        <select class="selecter" id="select_hour" name="select_hour">
             <option value="9">9時</option>
             <option value="10">10時</option>
             <option value="11" selected>11時</option>
@@ -28,7 +31,7 @@
             <option value="18">18時</option>        
         </select>
 
-        <select id="select_minute" name="select_minute">
+        <select class="selecter" id="select_minute" name="select_minute">
             <option value="0">00分</option>
             <option value="15">15分</option>
             <option value="30">30分</option>
@@ -39,7 +42,7 @@
 
     <div>
 
-        <select id="select_order" name="select_order">
+        <select class="orders" id="select_order" name="select_order">
             <option>シュリンク挿し</option>
             <option>紐付梱包</option>
             <option>チェーン付梱包</option>
@@ -47,7 +50,7 @@
             <option>新規</option>
         </select>
 
-        <select id="box" name="box">
+        <select class="orders" id="box" name="box">
             <option value="1">1箱</option>
             <option value="2">2箱</option>
             <option value="3">3箱</option>
@@ -119,8 +122,8 @@
     </div>
 
     <div>
-        <input type="button" value="RENDER" onclick="pushDraw()"/>
-        <input type="button" value="SEND" onclick="logToDiscord()"/>
+        <input class="buttons" type="button" value="RENDER" onclick="pushDraw()"/>
+        <input class="buttons" type="button" value="SEND" onclick="logToDiscord()"/>
         <textarea id="textarea" name="message" cols="50" rows="10"></textarea>
     </div>
 

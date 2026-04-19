@@ -5,7 +5,7 @@
 
 
         // Webhook URL
-        const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
+        const webhookUrl = 'https://discordapp.com/api/webhooks/1495562296775282698/8d3qTvtH7grC1ww_wXCAogwvy4d9I14XAGs9ko8JC7Z9thgHGE06-ZsmCDCIlH_5GmtW';
 
         // 投稿内容
         const payload = {
