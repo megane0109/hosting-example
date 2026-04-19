@@ -78,3 +78,7 @@ h3 {
     font-style: italic;
     color: #57557c;
 }
+
+#main_text {
+    height: 50;
+}
