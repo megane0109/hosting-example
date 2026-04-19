@@ -79,10 +79,13 @@ function pushDraw() {
   const month = delivery_day.split('-')[1];
   const date = delivery_day.split('-')[2];
   const day = days_list[day_number];
+  const hour = document.getElementById("select_hour").value;
+  const minute = document.getElementById("select_minute").value;
+
 
   console.log(month);
   console.log(date);
   console.log(day);
-  console.log(`# ${month}月${day}日${day}`);
+  console.log(`# ${month}月${date}日${day}__${hour}:${minute}  納品`);
 
 }
