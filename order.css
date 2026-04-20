@@ -1,21 +1,21 @@
 #calendar{
     width: 45%;
-    height: 100px;
+    height: 30px;
 }
 .selecter{
 	border :1px solid #eee;
     width: 23%;
-    height: 100px;
+    height: 30px;
 }
 .orders{
 	border :1px solid #eee;
     width: 70%;
-    height: 100px;
+    height: 30px;
 }
 .boxes{
 	border :1px solid #eee;
-    width: 20%;
-    height: 100px;
+    width: 23%;
+    height: 30px;
 }
 .buttons{
     width: 50%;
