@@ -10,7 +10,7 @@
         // 投稿内容
         const payload = {
             "content": markdown
-
+        };
         try {
             await fetch(webhookUrl, {
                 method: 'POST',
