@@ -35,3 +35,12 @@ select{
 #underline{    
       text-decoration:underline;
 }
+code {
+  background-color: #eee;
+  border-radius: 3px;
+  font-family: courier, monospace;
+  padding: 0 3px;
+}
+#pre_md_div{
+    border: 1px solid black;
+}
