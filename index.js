@@ -1,6 +1,6 @@
  async function logToDiscord() {
 
-        const markdown = document.getElementById("textarea");
+        const markdown = document.getElementById("textarea").value;
 
 
 
