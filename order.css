@@ -3,14 +3,17 @@
     height: 100px;
 }
 .selecter{
+	border :1px solid #eee;
     width: 23%;
     height: 100px;
 }
 .orders{
+	border :1px solid #eee;
     width: 70%;
     height: 100px;
 }
 .boxes{
+	border :1px solid #eee;
     width: 17%;
     height: 100px;
 }
