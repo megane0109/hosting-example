@@ -48,7 +48,10 @@ code {
     justify-content: center;
 }
 #middle_table{
-    margin-top: 100px;
+    margin-top: 80px;
 }
 #md_result_div{
+}
+#front_panel{    
+    margin-top: 40px;
 }
