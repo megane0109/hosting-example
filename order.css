@@ -29,7 +29,7 @@ select{
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
 }
 #textarea{
-    width: 98%;
+    width: 95%;
     font-size:15px;
 }
 #underline{    
@@ -43,7 +43,12 @@ code {
 }
 #pre_md_div{
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #middle_table{
     margin-top: 100px;
+}
+#md_result_div{
 }
