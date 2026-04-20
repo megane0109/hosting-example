@@ -29,5 +29,6 @@ select{
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
 }
 #textarea{
+    width: 100%;
     font-size:15px;
 }
