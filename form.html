@@ -14,6 +14,13 @@
 </head>
 <body>
 
+    <h1>シラセールクン Ver.1.1.0</h1>
+
+    <div>
+        <textarea id="textarea" name="message" cols="35" rows="5" placeholder="PREVIEWボタンを押してください。"></textarea>
+        <textarea id="textarea" name="message" cols="35" rows="5" placeholder="PREVIEWボタンを押してください。"></textarea>
+    </div>
+
     <table border="0">
         <tr>
             <td></td>
@@ -137,16 +144,10 @@
 
     <table border="0">
         <tr>
-            <td><textarea id="textarea" name="message" cols="35" rows="5" placeholder="PREVIEWボタンを押してください。"></textarea></td>
             <td><input class="buttons" type="button" value="PREVIEW" onclick="pushDraw()"/></td>
-        </tr>
-        <tr>
-            <td></td>
+            <td><input class="buttons" type="button" value="RELOAD" onclick="pushDraw()"/></td>
             <td><input class="buttons" type="button" value="SEND" onclick="logToDiscord()"/></td>
-        </tr>
-    
-    
-    
+        </tr>    
     </table>
     
 </body>
