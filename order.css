@@ -1,9 +1,9 @@
 #calendar{
-    width: 80%;
+    width: 50%;
     height: 100px;
 }
 .selecter{
-    width: 40%;
+    width: 25%;
     height: 100px;
 }
 .orders{
@@ -11,7 +11,7 @@
     height: 100px;
 }
 .buttons{
-    width: 40%;
+    width: 50%;
     height: 60px;
 }
 input{
