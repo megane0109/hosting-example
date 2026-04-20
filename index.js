@@ -95,3 +95,16 @@ function pushDraw() {
   markdown.value = main_string;
 
 }
+
+function preview_md(){
+  
+}
+
+window.onload = function () {
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate()+1); //翌日の日付を取得
+    var yyyy = tomorrow.getFullYear();
+    var mm = ("0"+(tomorrow.getMonth()+1)).slice(-2);
+    var dd = ("0"+tomorrow.getDate()).slice(-2);
+    document.getElementById("calendar").value=yyyy+'-'+mm+'-'+dd;
+}
