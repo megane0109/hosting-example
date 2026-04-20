@@ -1,20 +1,19 @@
 #calendar{
-    width: 45%;
     height: 30px;
+}
+.select_number{
+    width: 20%;
 }
 .selecter{
 	border :1px solid #eee;
-    width: 23%;
     height: 30px;
 }
 .orders{
 	border :1px solid #eee;
-    width: 70%;
     height: 30px;
 }
 .boxes{
 	border :1px solid #eee;
-    width: 23%;
     height: 30px;
 }
 .buttons{
