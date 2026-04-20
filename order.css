@@ -14,3 +14,7 @@
     width: 40%;
     height: 60px;
 }
+input{
+    font-size: 20px;    
+    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
+}

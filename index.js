@@ -1,16 +1,15 @@
  async function logToDiscord() {
 
-        const text = pushDraw();
+        const markdown = document.getElementById("textarea");
 
 
 
         // Webhook URL
-        const webhookUrl = 'https://discordapp.com/api/webhooks/1495562296775282698/8d3qTvtH7grC1ww_wXCAogwvy4d9I14XAGs9ko8JC7Z9thgHGE06-ZsmCDCIlH_5GmtW';
+        const webhookUrl = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
         // 投稿内容
         const payload = {
-            "content": text
-        };
+            "content": markdown
 
         try {
             await fetch(webhookUrl, {
@@ -94,7 +93,5 @@ function pushDraw() {
   const main_string = `# ${month}月${date}日${day}__${hour}:${minute}__納品\n## ・\`${order}\`     \`x${box}箱\``;
 
   markdown.value = main_string;
-
-  return main_string;
 
 }
