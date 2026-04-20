@@ -41,6 +41,8 @@
 
     <div>
 
+        <input type="checkbox" name="" value="">
+
         <select class="orders" id="select_order" name="select_order">
             <option>シュリンク挿し</option>
             <option>紐付梱包</option>
@@ -121,9 +123,19 @@
     </div>
 
     <div>
-        <input class="buttons" type="button" value="RENDER" onclick="pushDraw()"/>
-        <input class="buttons" type="button" value="SEND" onclick="logToDiscord()"/>
-        <textarea id="textarea" name="message" cols="50" rows="10"></textarea>
+        <table border="1">
+            <tr>
+                <td><textarea id="textarea" name="message" cols="40" rows="5" placeholder="PREVIEWボタンを押してください。"></textarea></td>
+                <td><input class="buttons" type="button" value="PREVIEW" onclick="pushDraw()"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="buttons" type="button" value="SEND" onclick="logToDiscord()"/></td>
+            </tr>
+        
+        
+        
+        </table>
     </div>
 
 
