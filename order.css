@@ -1,5 +1,5 @@
 #calendar{
-    width: 50%;
+    width: 45%;
     height: 100px;
 }
 .selecter{
@@ -7,7 +7,11 @@
     height: 100px;
 }
 .orders{
-    width: 40%;
+    width: 75%;
+    height: 100px;
+}
+.boxes{
+    width: 25%;
     height: 100px;
 }
 .buttons{
@@ -19,5 +23,5 @@ input{
     font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','San Fransisco',sans-serif;
 }
 #textareaa{
-    
+
 }
