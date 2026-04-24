@@ -76,7 +76,7 @@ async function sendToDiscord() {
             const content = row.querySelector('.item-content').value;
             const count = row.querySelector('.item-count').value;
             // 例：## ・`組立（紐）`     `x10箱`
-            messageContent += `## ・\`${content}\`　　　\`x${count}箱\`\n`;
+            messageContent += `## ・\`${content}\`     \`x${count}箱\`\n`;
             activeCount++;
         }
     });
