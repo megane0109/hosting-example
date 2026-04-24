@@ -16,20 +16,20 @@
 
     <label>納品時刻</label>
     <div class="time-row">
-        <div class="select-wrapper">
+        <div class="select-wrapper flex-fill">
             <select id="hour" required></select>
         </div>
         <span class="separator">:</span>
-        <div class="select-wrapper">
+        <div class="select-wrapper flex-fill">
             <select id="minute" required></select>
         </div>
     </div>
 
-    <div class="content-count-row">
+    <div class="input-line" id="row-1">
+        <input type="checkbox" class="row-toggle" checked data-row="1">
         <div class="content-box">
-            <label for="content">納品物の内容</label>
             <div class="select-wrapper">
-                <select id="content">
+                <select class="item-content">
                     <option value="シュリンク挿し" selected>シュリンク挿し</option>
                     <option value="組立（紐）">組立（紐）</option>
                     <option value="組立（チェーン）">組立（チェーン）</option>
@@ -39,9 +39,48 @@
             </div>
         </div>
         <div class="count-box">
-            <label for="count">個数</label>
             <div class="select-wrapper">
-                <select id="count" required></select>
+                <select class="item-count"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-line disabled-row" id="row-2">
+        <input type="checkbox" class="row-toggle" data-row="2">
+        <div class="content-box">
+            <div class="select-wrapper">
+                <select class="item-content" disabled>
+                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
+                    <option value="組立（紐）">組立（紐）</option>
+                    <option value="組立（チェーン）">組立（チェーン）</option>
+                    <option value="解体">解体</option>
+                    <option value="新規">新規</option>
+                </select>
+            </div>
+        </div>
+        <div class="count-box">
+            <div class="select-wrapper">
+                <select class="item-count" disabled></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-line disabled-row" id="row-3">
+        <input type="checkbox" class="row-toggle" data-row="3">
+        <div class="content-box">
+            <div class="select-wrapper">
+                <select class="item-content" disabled>
+                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
+                    <option value="組立（紐）">組立（紐）</option>
+                    <option value="組立（チェーン）">組立（チェーン）</option>
+                    <option value="解体">解体</option>
+                    <option value="新規">新規</option>
+                </select>
+            </div>
+        </div>
+        <div class="count-box">
+            <div class="select-wrapper">
+                <select class="item-count" disabled></select>
             </div>
         </div>
     </div>
