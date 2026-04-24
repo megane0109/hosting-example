@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>納品報告フォーム</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 20px; display: flex; justify-content: center; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        select, input, button { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #5865F2; color: white; border: none; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background-color: #4752c4; }
+        .status { text-align: center; font-size: 0.9em; margin-top: -10px; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>納品報告</h2>
+    
+    <label for="date">納品日 (mm/dd)</label>
+    <select id="date" required></select>
+
+    <label for="time">納品時刻 (hh:mm)</label>
+    <select id="time" required></select>
+
+    <label for="content">納品物の内容</label>
+    <input type="text" id="content" placeholder="例: バナー画像" required>
+
+    <label for="count">納品物の個数</label>
+    <input type="number" id="count" min="1" value="1" required>
+
+    <div id="statusMessage" class="status"></div>
+    <button onclick="sendToDiscord()">Discordへ送信</button>
+</div>
+
+<script>
+    // --- 初期設定 ---
+    const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE'; // ここにDiscordのWebhook URLを貼ってください
+
+    // 日付(mm/dd)の選択肢生成（今日から14日分）
+    const dateSelect = document.getElementById('date');
+    for (let i = 0; i < 14; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + i);
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const option = new Option(`${mm}/${dd}`, `${mm}/${dd}`);
+        dateSelect.add(option);
+    }
+
+    // 時刻(hh:mm)の選択肢生成 (9:00 - 18:00, 15分刻み)
+    const timeSelect = document.getElementById('time');
+    for (let h = 9; h <= 18; h++) {
+        for (let m = 0; m < 60; m += 15) {
+            if (h === 18 && m > 0) break; // 18:00まで
+            const hh = String(h).padStart(2, '0');
+            const mm = String(m).padStart(2, '0');
+            const option = new Option(`${hh}:${mm}`, `${hh}:${mm}`);
+            timeSelect.add(option);
+        }
+    }
+
+    // 送信処理
+    async function sendToDiscord() {
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const content = document.getElementById('content').value;
+        const count = document.getElementById('count').value;
+        const statusDiv = document.getElementById('statusMessage');
+
+        if (!content) {
+            alert('内容を入力してください');
+            return;
+        }
+
+        const payload = {
+            embeds: [{
+                title: "🚚 納品報告",
+                color: 5814783,
+                fields: [
+                    { name: "納品日", value: date, inline: true },
+                    { name: "納品時刻", value: time, inline: true },
+                    { name: "内容", value: content },
+                    { name: "個数", value: `${count}個`, inline: true }
+                ],
+                timestamp: new Date().toISOString()
+            }]
+        };
+
+        try {
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                statusDiv.innerText = "✅ 送信完了！";
+                statusDiv.style.color = "green";
+                statusDiv.style.display = "block";
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            statusDiv.innerText = "❌ 送信失敗。URLを確認してください。";
+            statusDiv.style.color = "red";
+            statusDiv.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
