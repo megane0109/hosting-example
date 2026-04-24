@@ -32,8 +32,11 @@ function initForm() {
 }
 
 function setupEvents() {
-    // フォームの入力監視
+    // 入力フォームの操作監視
     document.querySelectorAll('select, input:not(#editEnable)').forEach(el => {
+        // クリックや変更を試みた際のチェック
+        el.addEventListener('mousedown', (e) => checkEditMode(e));
+        
         el.addEventListener('change', () => {
             if (el.classList.contains('row-toggle')) {
                 const row = document.getElementById(`row-${el.dataset.row}`);
@@ -45,7 +48,7 @@ function setupEvents() {
         });
     });
 
-    // 編集エディタ内の変更もプレビューに反映
+    // 編集モードでの直接入力監視
     document.getElementById('messageEditor').addEventListener('input', () => {
         if (document.getElementById('editEnable').checked) {
             updatePreviewFromEditor();
@@ -57,13 +60,21 @@ function setupEvents() {
     const editor = document.getElementById('messageEditor');
     editToggle.addEventListener('change', () => {
         editor.readOnly = !editToggle.checked;
-        if (!editToggle.checked) syncUI(); // OFFにしたらフォームの状態に戻す
+        if (!editToggle.checked) syncUI(); 
     });
 
     document.getElementById('submitBtn').addEventListener('click', sendToDiscord);
 }
 
-// フォームの内容をエディタとプレビュー両方に同期
+// 編集モードがONのときにフォーム操作をブロックする関数
+function checkEditMode(e) {
+    const isEditOn = document.getElementById('editEnable').checked;
+    if (isEditOn) {
+        e.preventDefault(); // 操作をキャンセル
+        alert("編集モードをOFFにしてください");
+    }
+}
+
 function syncUI() {
     if (document.getElementById('editEnable').checked) return;
 
@@ -76,6 +87,7 @@ function syncUI() {
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const dd = String(d.getDate()).padStart(2, '0');
     
+    // ご指定のマークダウン形式
     let message = `# ${mm}月${dd}日㈪__${hour}:${min}__納品\n`;
     let activeExist = false;
     document.querySelectorAll('.input-line').forEach((row) => {
@@ -93,12 +105,10 @@ function syncUI() {
     updatePreviewDisplay(finalMsg);
 }
 
-// エディタ（自由記述）の内容をプレビューに反映
 function updatePreviewFromEditor() {
     updatePreviewDisplay(document.getElementById('messageEditor').value);
 }
 
-// プレビュー表示エリアのHTML更新
 function updatePreviewDisplay(msg) {
     const preview = document.getElementById('previewDisplay');
     if (!msg) { preview.innerHTML = "内容がありません"; return; }
@@ -114,7 +124,6 @@ async function sendToDiscord() {
     const finalContent = document.getElementById('messageEditor').value.trim();
     if (!finalContent) return alert("送信する内容がありません。");
 
-    // 手動編集されている場合の警告
     if (finalContent !== lastGeneratedMessage) {
         if (!confirm("編集されたメッセージを送信してもよろしいですか？")) return;
     }

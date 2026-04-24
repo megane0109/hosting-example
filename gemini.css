@@ -2,11 +2,13 @@
     --discord-color: #5865F2;
     --bg-color: #f0f2f5;
     --text-main: #2c3e50;
-    --discord-dark: #313338;
+    --discord-light: #ffffff;
+    --discord-border: #e3e5e8;
+    --editor-bg: #e9ecef; /* 背景色(f0f2f5)より少し濃いグレー */
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-color);
     margin: 0;
     padding: env(safe-area-inset-top) 20px calc(env(safe-area-inset-bottom) + 20px) 20px;
@@ -30,7 +32,7 @@ select, input[type="date"], textarea {
 
 .time-row, .input-line { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .flex-fill { flex: 1; }
-.row-toggle { width: 24px; height: 24px; }
+.row-toggle { width: 24px; height: 24px; cursor: pointer; }
 .content-box { flex: 1; }
 .count-box { width: 85px; }
 .disabled-row { opacity: 0.35; }
@@ -40,25 +42,26 @@ select, input[type="date"], textarea {
     content: '▼'; font-size: 10px; color: #999; position: absolute; right: 12px; top: 18px; pointer-events: none;
 }
 
-/* プレビュー表示用 */
-.discord-preview {
-    background-color: var(--discord-dark); color: #dbdee1;
+/* ライトモード風プレビュー */
+.discord-preview-light {
+    background-color: var(--discord-light); color: #2e3338;
     padding: 16px; border-radius: 8px; font-size: 0.85rem; line-height: 1.4;
-    white-space: pre-wrap; border: 1px solid #1e1f22; min-height: 40px;
+    white-space: pre-wrap; border: 1px solid var(--discord-border); min-height: 40px;
 }
-.preview-h1 { display: block; font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 4px; }
-.preview-h2 { display: block; font-size: 0.95rem; font-weight: bold; color: #fff; margin-top: 2px; }
-.preview-code { background-color: #1e1f22; padding: 1px 4px; border-radius: 3px; font-family: monospace; color: #e3e5e8; }
+.preview-h1 { display: block; font-size: 1.1rem; font-weight: bold; color: #060607; margin-bottom: 4px; }
+.preview-h2 { display: block; font-size: 0.95rem; font-weight: bold; color: #060607; margin-top: 2px; }
+.preview-code { background-color: #f2f3f5; padding: 1px 4px; border-radius: 3px; font-family: monospace; color: #4f5660; }
 
-/* 編集エディタ用 */
+/* 編集エディタ（グレー背景） */
 .preview-header { display: flex; justify-content: space-between; align-items: center; }
 .edit-toggle-wrap { font-size: 0.75rem; color: #5865F2; font-weight: bold; }
 
-.discord-editor {
-    height: 120px; background-color: #2b2d31; color: #dbdee1;
+.discord-editor-light {
+    height: 120px; background-color: var(--editor-bg); color: #2e3338;
     font-family: monospace; font-size: 14px; resize: none; margin-bottom: 20px;
+    border: 1.5px solid #d1d4d7;
 }
-.discord-editor:read-only { opacity: 0.6; cursor: not-allowed; }
+.discord-editor-light:read-only { opacity: 0.7; cursor: not-allowed; }
 
 button#submitBtn {
     width: 100%; height: 54px; background-color: var(--discord-color); color: white;
