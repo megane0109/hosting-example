@@ -28,66 +28,32 @@
     <label>納品内容（有効な行のみ送信）</label>
     <div class="input-line" id="row-1">
         <input type="checkbox" class="row-toggle" checked data-row="1">
-        <div class="content-box">
-            <div class="select-wrapper">
-                <select class="item-content">
-                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                    <option value="組立（紐）">組立（紐）</option>
-                    <option value="組立（チェーン）">組立（チェーン）</option>
-                    <option value="解体">解体</option>
-                    <option value="新規">新規</option>
-                </select>
-            </div>
-        </div>
-        <div class="count-box">
-            <div class="select-wrapper">
-                <select class="item-count"></select>
-            </div>
-        </div>
+        <div class="content-box"><div class="select-wrapper"><select class="item-content"><option value="シュリンク挿し" selected>シュリンク挿し</option><option value="組立（紐）">組立（紐）</option><option value="組立（チェーン）">組立（チェーン）</option><option value="解体">解体</option><option value="新規">新規</option></select></div></div>
+        <div class="count-box"><div class="select-wrapper"><select class="item-count"></select></div></div>
     </div>
 
     <div class="input-line disabled-row" id="row-2">
         <input type="checkbox" class="row-toggle" data-row="2">
-        <div class="content-box">
-            <div class="select-wrapper">
-                <select class="item-content" disabled>
-                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                    <option value="組立（紐）">組立（紐）</option>
-                    <option value="組立（チェーン）">組立（チェーン）</option>
-                    <option value="解体">解体</option>
-                    <option value="新規">新規</option>
-                </select>
-            </div>
-        </div>
-        <div class="count-box">
-            <div class="select-wrapper">
-                <select class="item-count" disabled></select>
-            </div>
-        </div>
+        <div class="content-box"><div class="select-wrapper"><select class="item-content" disabled><option value="シュリンク挿し" selected>シュリンク挿し</option><option value="組立（紐）">組立（紐）</option><option value="組立（チェーン）">組立（チェーン）</option><option value="解体">解体</option><option value="新規">新規</option></select></div></div>
+        <div class="count-box"><div class="select-wrapper"><select class="item-count" disabled></select></div></div>
     </div>
 
     <div class="input-line disabled-row" id="row-3">
         <input type="checkbox" class="row-toggle" data-row="3">
-        <div class="content-box">
-            <div class="select-wrapper">
-                <select class="item-content" disabled>
-                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                    <option value="組立（紐）">組立（紐）</option>
-                    <option value="組立（チェーン）">組立（チェーン）</option>
-                    <option value="解体">解体</option>
-                    <option value="新規">新規</option>
-                </select>
-            </div>
-        </div>
-        <div class="count-box">
-            <div class="select-wrapper">
-                <select class="item-count" disabled></select>
-            </div>
-        </div>
+        <div class="content-box"><div class="select-wrapper"><select class="item-content" disabled><option value="シュリンク挿し" selected>シュリンク挿し</option><option value="組立（紐）">組立（紐）</option><option value="組立（チェーン）">組立（チェーン）</option><option value="解体">解体</option><option value="新規">新規</option></select></div></div>
+        <div class="count-box"><div class="select-wrapper"><select class="item-count" disabled></select></div></div>
     </div>
 
-    <label>送信プレビュー</label>
-    <div id="previewArea" class="discord-preview"></div>
+    <label>送信プレビュー（反映イメージ）</label>
+    <div id="previewDisplay" class="discord-preview"></div>
+
+    <div class="preview-header">
+        <label>メッセージ編集（Markdown）</label>
+        <div class="edit-toggle-wrap">
+            <input type="checkbox" id="editEnable"> 編集モードをONにする
+        </div>
+    </div>
+    <textarea id="messageEditor" class="discord-editor" readonly></textarea>
 
     <div id="statusMessage" class="status"></div>
     <button id="submitBtn">Discordへ送信</button>
