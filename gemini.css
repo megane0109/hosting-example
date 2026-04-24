@@ -1,16 +1,17 @@
 :root {
     --discord-color: #5865F2;
-    /* ブルーライトを抑えた配色（セピア・アースカラー） */
-    --bg-color: #fdfaf5; 
-    --container-bg: #fcf8f0;
-    --text-main: #5d4037; 
-    --text-sub: #8d6e63;
-    --input-bg: #fffcf9;
-    --border-color: #d7ccc8;
-    /* プレビュー用のみDiscord標準色を維持 */
+    /* ダークテーマ用カラー */
+    --bg-color: #1a1c1e;         /* 全体背景 */
+    --container-bg: #2b2d31;     /* カード背景 */
+    --text-main: #e0e0e0;        /* メイン文字色 */
+    --text-sub: #b0b0b0;         /* 補助文字色 */
+    --input-bg: #383a40;         /* 入力欄背景 */
+    --border-color: #404249;     /* 枠線 */
+    
+    /* プレビュー用：Discord標準ライトモードを維持 */
     --discord-light: #ffffff;
     --discord-border: #e3e5e8;
-    --editor-bg: #ece7e1;
+    --editor-bg: #1e1f22;        /* 編集エリア用ダーク背景 */
 }
 
 body {
@@ -25,11 +26,11 @@ body {
 
 .container {
     background: var(--container-bg); padding: 20px; border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     width: 100%; max-width: 450px; margin-top: 15px;
 }
 
-h2 { text-align: center; color: var(--text-main); margin-bottom: 20px; font-size: 1.4rem; }
+h2 { text-align: center; color: #fff; margin-bottom: 20px; font-size: 1.4rem; }
 label { display: block; margin-bottom: 6px; font-size: 0.8rem; font-weight: 700; color: var(--text-sub); margin-top: 12px; }
 
 /* フォーム横並びレイアウト */
@@ -40,15 +41,18 @@ label { display: block; margin-bottom: 6px; font-size: 0.8rem; font-weight: 700;
 select, input[type="date"], textarea {
     width: 100%; padding: 10px; border: 1.5px solid var(--border-color);
     border-radius: 10px; font-size: 16px; background-color: var(--input-bg); box-sizing: border-box;
-    -webkit-appearance: none; appearance: none; color: var(--text-main);
+    -webkit-appearance: none; appearance: none; color: #fff;
+    outline: none;
 }
+
+select:focus, input[type="date"]:focus { border-color: var(--discord-color); }
 
 .time-row, .input-line { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
 .flex-fill { flex: 1; }
 .row-toggle { width: 24px; height: 24px; cursor: pointer; accent-color: var(--discord-color); }
 .content-box { flex: 1; }
 .count-box { width: 85px; }
-.disabled-row { opacity: 0.35; }
+.disabled-row { opacity: 0.3; }
 
 .select-wrapper { position: relative; }
 .select-wrapper::after {
@@ -56,7 +60,7 @@ select, input[type="date"], textarea {
     right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;
 }
 
-/* プレビュー：ここはライトモードのデザインを維持 */
+/* プレビュー：Discord標準ライトモードを維持 */
 .discord-preview-light {
     background-color: var(--discord-light); color: #2e3338;
     padding: 12px; border-radius: 8px; font-size: 0.85rem; line-height: 1.4;
@@ -69,14 +73,19 @@ select, input[type="date"], textarea {
 .preview-header { display: flex; justify-content: space-between; align-items: center; }
 .edit-toggle-wrap { font-size: 0.75rem; color: var(--discord-color); font-weight: bold; }
 
-.discord-editor-light {
-    height: 100px; background-color: var(--editor-bg); color: var(--text-main);
-    font-family: monospace; font-size: 14px; resize: none; margin-bottom: 15px; border: 1.5px solid var(--border-color);
+/* 編集エリア：ダーク背景 */
+.discord-editor-dark {
+    height: 100px; background-color: var(--editor-bg); color: #dbdee1;
+    font-family: monospace; font-size: 14px; resize: none; margin-bottom: 15px; 
+    border: 1.5px solid var(--border-color);
 }
+.discord-editor-dark:read-only { opacity: 0.5; }
 
 button#submitBtn {
     width: 100%; height: 50px; background-color: var(--discord-color); color: white;
     border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
 }
+button#submitBtn:active { transform: scale(0.98); opacity: 0.9; }
 
 .status { text-align: center; padding: 10px; display: none; margin-bottom: 10px; border-radius: 8px; font-weight: bold; color: white; }

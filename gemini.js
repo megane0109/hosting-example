@@ -101,7 +101,7 @@ function syncUI() {
 
 function updatePreviewDisplay(msg) {
     const preview = document.getElementById('previewDisplay');
-    if (!msg) { preview.innerHTML = "有効な内容がありません"; return; }
+    if (!msg) { preview.innerHTML = "内容がありません"; return; }
 
     let html = msg
         .replace(/^# (.*$)/gm, '<span class="preview-h1">$1</span>')
