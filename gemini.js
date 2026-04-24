@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initForm() {
-    // 翌日の日付設定
+    // 初期値を翌日に設定
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     document.getElementById('date').value = tomorrow.toISOString().split('T')[0];
@@ -24,10 +24,12 @@ function initForm() {
         minSel.add(new Option(`${mm}分`, mm, m===0, m===0));
     });
 
-    // 各行の個数セレクトボックス (1-10, 初期値10)
+    // 個数の選択肢 (1 - 10) / 初期値 10箱
     document.querySelectorAll('.item-count').forEach(sel => {
         for (let c = 1; c <= 10; c++) {
-            sel.add(new Option(`${c}個`, c, c===10, c===10));
+            const opt = new Option(`${c}箱`, c);
+            if (c === 10) opt.selected = true;
+            sel.add(opt);
         }
     });
 }
@@ -38,7 +40,6 @@ function setupToggleEvents() {
             const rowId = `row-${e.target.dataset.row}`;
             const rowElement = document.getElementById(rowId);
             const selects = rowElement.querySelectorAll('select');
-            
             if (e.target.checked) {
                 rowElement.classList.remove('disabled-row');
                 selects.forEach(s => s.disabled = false);
@@ -57,31 +58,33 @@ async function sendToDiscord() {
     
     if (!rawDate) return alert("日付を選択してください");
 
-    // 有効な行のデータだけを収集
-    const activeFields = [];
-    document.querySelectorAll('.input-line').forEach(row => {
+    // 日付と曜日の取得
+    const d = new Date(rawDate);
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+    const dayName = dayNames[d.getDay()];
+
+    // メッセージのヘッダー部分の組み立て
+    // 例：# 04月27日㈪__11:00__納品
+    let messageContent = `# ${mm}月${dd}日㈪__${hour}:${min}__納品\n`;
+
+    let activeCount = 0;
+    document.querySelectorAll('.input-line').forEach((row) => {
         const isEnabled = row.querySelector('.row-toggle').checked;
         if (isEnabled) {
             const content = row.querySelector('.item-content').value;
             const count = row.querySelector('.item-count').value;
-            activeFields.push({ name: "内容・個数", value: `${content}：${count}個` });
+            // 例：## ・`組立（紐）`     `x10箱`
+            messageContent += `## ・\`${content}\`　　　\`x${count}箱\`\n`;
+            activeCount++;
         }
     });
 
-    if (activeFields.length === 0) return alert("送信する行を少なくとも1つ有効にしてください");
+    if (activeCount === 0) return alert("送信する行を少なくとも1つ有効にしてください");
 
-    const dateParts = rawDate.split('-');
     const payload = {
-        embeds: [{
-            title: "🚚 納品報告",
-            color: 5814783,
-            fields: [
-                { name: "納品日", value: `${dateParts[1]}/${dateParts[2]}`, inline: true },
-                { name: "納品時刻", value: `${hour}:${min}`, inline: true },
-                ...activeFields
-            ],
-            timestamp: new Date().toISOString()
-        }]
+        content: messageContent
     };
 
     try {
@@ -90,6 +93,7 @@ async function sendToDiscord() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
+
         if (response.ok) {
             showStatus("✅ 送信完了！", "#2ecc71");
         } else {
