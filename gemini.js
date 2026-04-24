@@ -88,7 +88,7 @@ function syncUI() {
         if (row.querySelector('.row-toggle').checked) {
             const item = row.querySelector('.item-content').value;
             const count = row.querySelector('.item-count').value;
-            message += `## ・\`${item}\`　　　\`x${count}箱\`\n`;
+            message += `## ・\`${item}\`     \`x${count}箱\`\n`;
             activeExist = true;
         }
     });
