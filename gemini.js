@@ -1,5 +1,5 @@
-// --- 初期設定 ---
-const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+// 指定されたWebhook URL
+const WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1492542194870128850/mInnnsxcHerVFC6AP-AtPMclcmADVoj8fjQIirC61lXD32eGWzgVrkNH_8kBvzircBPw';
 
 document.addEventListener('DOMContentLoaded', () => {
     initForm();
@@ -7,49 +7,79 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initForm() {
-    const dateSelect = document.getElementById('date');
-    const timeSelect = document.getElementById('time');
+    const dateInput = document.getElementById('date');
+    const hourSelect = document.getElementById('hour');
+    const minuteSelect = document.getElementById('minute');
+    const countSelect = document.getElementById('count');
 
-    for (let i = 0; i < 14; i++) {
-        const d = new Date();
-        d.setDate(d.getDate() + i);
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate()).padStart(2, '0');
-        dateSelect.add(new Option(`${mm}/${dd}`, `${mm}/${dd}`));
-    }
+    // 1. 初期値を翌日に設定
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const yyyy = tomorrow.getFullYear();
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    const dd = String(tomorrow.getDate()).padStart(2, '0');
+    dateInput.value = `${yyyy}-${mm}-${dd}`;
 
+    // 2. 時の選択肢 (9 - 18) / 初期値 11時
     for (let h = 9; h <= 18; h++) {
-        for (let m = 0; m < 60; m += 15) {
-            if (h === 18 && m > 0) break;
-            const hh = String(h).padStart(2, '0');
-            const mm = String(m).padStart(2, '0');
-            timeSelect.add(new Option(`${hh}:${mm}`, `${hh}:${mm}`));
-        }
+        const hh = String(h).padStart(2, '0');
+        const opt = new Option(`${hh}時`, hh);
+        if (hh === "11") opt.selected = true;
+        hourSelect.add(opt);
     }
+
+    // 3. 分の選択肢 (00, 15, 30, 45) / 初期値 00分
+    [0, 15, 30, 45].forEach(m => {
+        const min = String(m).padStart(2, '0');
+        const opt = new Option(`${min}分`, min);
+        if (min === "00") opt.selected = true;
+        minuteSelect.add(opt);
+    });
+
+    // 4. 個数の選択肢 (1 - 10) / 初期値 10個
+    for (let c = 1; c <= 10; c++) {
+        const opt = new Option(`${c}個`, c);
+        if (c === 10) opt.selected = true;
+        countSelect.add(opt);
+    }
+
+    // 18時の時は00分固定にする制御
+    hourSelect.addEventListener('change', () => {
+        if (hourSelect.value === "18") {
+            minuteSelect.value = "00";
+            Array.from(minuteSelect.options).forEach(opt => {
+                if (opt.value !== "00") opt.disabled = true;
+            });
+        } else {
+            Array.from(minuteSelect.options).forEach(opt => opt.disabled = false);
+        }
+    });
 }
 
 async function sendToDiscord() {
-    const data = {
-        date: document.getElementById('date').value,
-        time: document.getElementById('time').value,
-        content: document.getElementById('content').value,
-        count: document.getElementById('count').value
-    };
+    const rawDate = document.getElementById('date').value;
+    const hour = document.getElementById('hour').value;
+    const minute = document.getElementById('minute').value;
+    const content = document.getElementById('content').value;
+    const count = document.getElementById('count').value;
 
-    if (!data.content) {
-        alert('内容を入力してください');
+    if (!rawDate) {
+        alert('日付を選択してください');
         return;
     }
+
+    const dateParts = rawDate.split('-');
+    const formattedDate = `${dateParts[1]}/${dateParts[2]}`;
 
     const payload = {
         embeds: [{
             title: "🚚 納品報告",
             color: 5814783,
             fields: [
-                { name: "納品日", value: data.date, inline: true },
-                { name: "納品時刻", value: data.time, inline: true },
-                { name: "内容", value: data.content },
-                { name: "個数", value: `${data.count}個`, inline: true }
+                { name: "納品日", value: formattedDate, inline: true },
+                { name: "納品時刻", value: `${hour}:${minute}`, inline: true },
+                { name: "内容", value: content, inline: false },
+                { name: "個数", value: `${count}個`, inline: true }
             ],
             timestamp: new Date().toISOString()
         }]
@@ -68,7 +98,7 @@ async function sendToDiscord() {
             throw new Error();
         }
     } catch (error) {
-        showStatus("❌ 送信失敗。設定を確認してください。", "#e74c3c");
+        showStatus("❌ 送信失敗。Webhook URLを確認してください。", "#e74c3c");
     }
 }
 

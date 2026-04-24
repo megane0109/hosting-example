@@ -31,7 +31,6 @@ h2 {
     color: var(--text-main);
     font-size: 1.5rem;
     margin-bottom: 24px;
-    letter-spacing: -0.5px;
 }
 
 label {
@@ -56,6 +55,32 @@ select, input {
     box-sizing: border-box;
 }
 
+/* 横並びレイアウト共通 */
+.time-row, .content-count-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time-row select, .content-count-row select {
+    margin-bottom: 0;
+}
+
+/* 内容と個数の比率調整 */
+.content-box {
+    flex: 1; /* 内容を広く取る */
+}
+
+.count-box {
+    width: 85px; /* 最大値10に合わせて見切れない最小幅を確保 */
+}
+
+.separator {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 .select-wrapper {
     position: relative;
 }
@@ -65,7 +90,7 @@ select, input {
     font-size: 10px;
     color: #999;
     position: absolute;
-    right: 15px;
+    right: 12px;
     top: 18px;
     pointer-events: none;
 }
@@ -80,7 +105,7 @@ button {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.1s, background-color 0.2s;
+    transition: transform 0.1s;
     -webkit-tap-highlight-color: transparent;
 }
 
