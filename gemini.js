@@ -33,7 +33,6 @@ function initForm() {
 
 function setupEvents() {
     document.querySelectorAll('select, input:not(#editEnable)').forEach(el => {
-        // 編集モードONの時のブロック処理
         el.addEventListener('mousedown', (e) => {
             if (document.getElementById('editEnable').checked) {
                 e.preventDefault();
@@ -89,7 +88,7 @@ function syncUI() {
         if (row.querySelector('.row-toggle').checked) {
             const item = row.querySelector('.item-content').value;
             const count = row.querySelector('.item-count').value;
-            message += `## ・\`${item}\`     \`x${count}箱\`\n`;
+            message += `## ・\`${item}\`　　　\`x${count}箱\`\n`;
             activeExist = true;
         }
     });

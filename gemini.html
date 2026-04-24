@@ -11,88 +11,71 @@
 <div class="container">
     <h2>納品報告</h2>
     
-    <div class="form-section">
-        <label for="date">納品日</label>
-        <input type="date" id="date" required>
-
-        <label>納品時刻</label>
-        <div class="time-row">
-            <div class="select-wrapper flex-fill">
-                <select id="hour" required></select>
-            </div>
-            <span class="separator">:</span>
-            <div class="select-wrapper flex-fill">
-                <select id="minute" required></select>
-            </div>
+    <div class="top-row">
+        <div class="date-section flex-fill">
+            <label for="date">納品日</label>
+            <input type="date" id="date" required>
         </div>
-
-        <label>納品内容（有効な行のみ送信）</label>
-        <div class="input-line" id="row-1">
-            <input type="checkbox" class="row-toggle" checked data-row="1">
-            <div class="content-box">
-                <div class="select-wrapper">
-                    <select class="item-content">
-                        <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                        <option value="組立（紐）">組立（紐）</option>
-                        <option value="組立（チェーン）">組立（チェーン）</option>
-                        <option value="解体">解体</option>
-                        <option value="新規">新規</option>
-                    </select>
+        <div class="time-section">
+            <label>納品時刻</label>
+            <div class="time-row">
+                <div class="select-wrapper hour-box">
+                    <select id="hour" required></select>
                 </div>
-            </div>
-            <div class="count-box">
-                <div class="select-wrapper">
-                    <select class="item-count"></select>
-                </div>
-            </div>
-        </div>
-
-        <div class="input-line disabled-row" id="row-2">
-            <input type="checkbox" class="row-toggle" data-row="2">
-            <div class="content-box">
-                <div class="select-wrapper">
-                    <select class="item-content" disabled>
-                        <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                        <option value="組立（紐）">組立（紐）</option>
-                        <option value="組立（チェーン）">組立（チェーン）</option>
-                        <option value="解体">解体</option>
-                        <option value="新規">新規</option>
-                    </select>
-                </div>
-            </div>
-            <div class="count-box">
-                <div class="select-wrapper">
-                    <select class="item-count" disabled></select>
-                </div>
-            </div>
-        </div>
-
-        <div class="input-line disabled-row" id="row-3">
-            <input type="checkbox" class="row-toggle" data-row="3">
-            <div class="content-box">
-                <div class="select-wrapper">
-                    <select class="item-content" disabled>
-                        <option value="シュリンク挿し" selected>シュリンク挿し</option>
-                        <option value="組立（紐）">組立（紐）</option>
-                        <option value="組立（チェーン）">組立（チェーン）</option>
-                        <option value="解体">解体</option>
-                        <option value="新規">新規</option>
-                    </select>
-                </div>
-            </div>
-            <div class="count-box">
-                <div class="select-wrapper">
-                    <select class="item-count" disabled></select>
+                <span class="separator">:</span>
+                <div class="select-wrapper min-box">
+                    <select id="minute" required></select>
                 </div>
             </div>
         </div>
     </div>
 
-    <label>送信プレビュー（反映イメージ）</label>
+    <label>納品内容（有効な行のみ送信）</label>
+    <div class="input-line" id="row-1">
+        <input type="checkbox" class="row-toggle" checked data-row="1">
+        <div class="content-box">
+            <div class="select-wrapper">
+                <select class="item-content">
+                    <option value="シュリンク挿し" selected>シュリンク挿し</option>
+                    <option value="組立（紐）">組立（紐）</option>
+                    <option value="組立（チェーン）">組立（チェーン）</option>
+                    <option value="解体">解体</option>
+                    <option value="新規">新規</option>
+                </select>
+            </div>
+        </div>
+        <div class="count-box">
+            <div class="select-wrapper">
+                <select class="item-count"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-line disabled-row" id="row-2">
+        <input type="checkbox" class="row-toggle" data-row="2">
+        <div class="content-box">
+            <div class="select-wrapper"><select class="item-content" disabled><option value="シュリンク挿し">シュリンク挿し</option><option value="組立（紐）">組立（紐）</option><option value="組立（チェーン）">組立（チェーン）</option><option value="解体">解体</option><option value="新規">新規</option></select></div>
+        </div>
+        <div class="count-box">
+            <div class="select-wrapper"><select class="item-count" disabled></select></div>
+        </div>
+    </div>
+
+    <div class="input-line disabled-row" id="row-3">
+        <input type="checkbox" class="row-toggle" data-row="3">
+        <div class="content-box">
+            <div class="select-wrapper"><select class="item-content" disabled><option value="シュリンク挿し">シュリンク挿し</option><option value="組立（紐）">組立（紐）</option><option value="組立（チェーン）">組立（チェーン）</option><option value="解体">解体</option><option value="新規">新規</option></select></div>
+        </div>
+        <div class="count-box">
+            <div class="select-wrapper"><select class="item-count" disabled></select></div>
+        </div>
+    </div>
+
+    <label>送信プレビュー</label>
     <div id="previewDisplay" class="discord-preview-light"></div>
 
     <div class="preview-header">
-        <label>メッセージ編集（Markdown）</label>
+        <label>メッセージ編集</label>
         <div class="edit-toggle-wrap">
             <input type="checkbox" id="editEnable"> 編集モードをON
         </div>
