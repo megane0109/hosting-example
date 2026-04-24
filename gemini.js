@@ -32,10 +32,15 @@ function initForm() {
 }
 
 function setupEvents() {
-    // 入力フォームの操作監視
     document.querySelectorAll('select, input:not(#editEnable)').forEach(el => {
-        // クリックや変更を試みた際のチェック
-        el.addEventListener('mousedown', (e) => checkEditMode(e));
+        // 編集モードONの時のブロック処理
+        el.addEventListener('mousedown', (e) => {
+            if (document.getElementById('editEnable').checked) {
+                e.preventDefault();
+                alert("編集モードをOFFにしてください");
+                if (document.activeElement) document.activeElement.blur();
+            }
+        });
         
         el.addEventListener('change', () => {
             if (el.classList.contains('row-toggle')) {
@@ -48,14 +53,12 @@ function setupEvents() {
         });
     });
 
-    // 編集モードでの直接入力監視
     document.getElementById('messageEditor').addEventListener('input', () => {
         if (document.getElementById('editEnable').checked) {
-            updatePreviewFromEditor();
+            updatePreviewDisplay(document.getElementById('messageEditor').value);
         }
     });
 
-    // 編集モード切り替え
     const editToggle = document.getElementById('editEnable');
     const editor = document.getElementById('messageEditor');
     editToggle.addEventListener('change', () => {
@@ -64,15 +67,6 @@ function setupEvents() {
     });
 
     document.getElementById('submitBtn').addEventListener('click', sendToDiscord);
-}
-
-// 編集モードがONのときにフォーム操作をブロックする関数
-function checkEditMode(e) {
-    const isEditOn = document.getElementById('editEnable').checked;
-    if (isEditOn) {
-        e.preventDefault(); // 操作をキャンセル
-        alert("編集モードをOFFにしてください");
-    }
 }
 
 function syncUI() {
@@ -86,15 +80,16 @@ function syncUI() {
     const d = new Date(rawDate);
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const dd = String(d.getDate()).padStart(2, '0');
+    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+    const dayName = dayNames[d.getDay()];
     
-    // ご指定のマークダウン形式
-    let message = `# ${mm}月${dd}日㈪__${hour}:${min}__納品\n`;
+    let message = `# ${mm}月${dd}日(${dayName})__${hour}:${min}__納品\n`;
     let activeExist = false;
     document.querySelectorAll('.input-line').forEach((row) => {
         if (row.querySelector('.row-toggle').checked) {
             const item = row.querySelector('.item-content').value;
             const count = row.querySelector('.item-count').value;
-            message += `## ・\`${item}\`　　　\`x${count}箱\`\n`;
+            message += `## ・\`${item}\`     \`x${count}箱\`\n`;
             activeExist = true;
         }
     });
@@ -105,13 +100,9 @@ function syncUI() {
     updatePreviewDisplay(finalMsg);
 }
 
-function updatePreviewFromEditor() {
-    updatePreviewDisplay(document.getElementById('messageEditor').value);
-}
-
 function updatePreviewDisplay(msg) {
     const preview = document.getElementById('previewDisplay');
-    if (!msg) { preview.innerHTML = "内容がありません"; return; }
+    if (!msg) { preview.innerHTML = "有効な内容がありません"; return; }
 
     let html = msg
         .replace(/^# (.*$)/gm, '<span class="preview-h1">$1</span>')

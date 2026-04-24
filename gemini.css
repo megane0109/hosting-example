@@ -4,7 +4,7 @@
     --text-main: #2c3e50;
     --discord-light: #ffffff;
     --discord-border: #e3e5e8;
-    --editor-bg: #e9ecef; /* 背景色(f0f2f5)より少し濃いグレー */
+    --editor-bg: #e9ecef;
 }
 
 body {
@@ -25,9 +25,18 @@ body {
 h2 { text-align: center; color: var(--text-main); margin-bottom: 24px; }
 label { display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; color: #666; margin-top: 15px; }
 
+/* セレクトボックスの修正（二重矢印の解消） */
 select, input[type="date"], textarea {
     width: 100%; padding: 12px; border: 1.5px solid #e1e4e8;
     border-radius: 10px; font-size: 16px; background-color: #fafbfc; box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; /* デフォルトの矢印を消去 */
+}
+
+select {
+    padding-right: 30px; /* 自作矢印用の余白 */
+    cursor: pointer;
 }
 
 .time-row, .input-line { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
@@ -37,9 +46,11 @@ select, input[type="date"], textarea {
 .count-box { width: 85px; }
 .disabled-row { opacity: 0.35; }
 
-.select-wrapper { position: relative; }
+.select-wrapper { position: relative; width: 100%; }
 .select-wrapper::after {
-    content: '▼'; font-size: 10px; color: #999; position: absolute; right: 12px; top: 18px; pointer-events: none;
+    content: '▼'; font-size: 10px; color: #999; position: absolute; 
+    right: 12px; top: 50%; transform: translateY(-50%); /* 垂直中央配置 */
+    pointer-events: none;
 }
 
 /* ライトモード風プレビュー */
